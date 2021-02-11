@@ -7,6 +7,7 @@ int bg1, bg2, bg3;
 int fg1, fg2, fg3, fg4, fg5, fg6;
 int bunny;
 int cloud;
+int r;
 
 
 // Setup ==============================
@@ -29,7 +30,7 @@ void setup() {
   fg5 = 600;
   fg6 = 800;
 
-  //initialize bunny
+  // initialize bunny
   bunny = 100;
 }
 // End setup ===============================
@@ -39,6 +40,10 @@ void setup() {
 void draw() {
   // sky
   background(3, 172, 255);
+
+  // sun
+  sun (400, 0);
+  r = r + 1;
   
   // cloud
   cloud (cloud, 150);
@@ -136,5 +141,15 @@ void cloud (int x, int y) {
   ellipse(150, 100, 100, 100);
   ellipse(50, 100, 100, 100);
   ellipse(100, 50, 100, 100);
+  popMatrix();
+}
+
+void sun (int x, int y) {
+  pushMatrix();
+  translate(400, 300);
+  rotate (radians(r));
+  PImage img;
+  img = loadImage("Sun.png");
+  image(img, 0, 0);
   popMatrix();
 }
